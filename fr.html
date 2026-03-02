@@ -11,12 +11,13 @@
         <h1>⛲ Puits de Salut</h1>
         <p><em>"Vous puiserez de l'eau avec joie aux sources du salut." – Ésaïe 12:3</em></p>
         <nav>
-            <a href="index.html">English</a> |
-            <a href="fr.html">Accueil</a> |
-            <a href="#bible">Bible</a> |
-            <a href="#etude">Guides d'étude</a> |
-            <a href="#audio">Messages audio</a>
-        </nav>
+    <a href="index.html">English</a> |
+    <a href="fr.html">Accueil</a> |
+    <a href="bible-fr.html">Bible</a> |
+    <a href="#etude">Guides d'étude</a> |
+    <a href="#audio">Messages audio</a> |
+    <a href="blog/fr/index.html">Blogue</a>
+</nav>
     </header>
 
     <main>
@@ -28,9 +29,13 @@
         <section id="bible">
             <h2>📖 Verset du Jour</h2>
             <blockquote>
-                <p id="verse">"Car Dieu a tant aimé le monde qu'il a donné son Fils unique, afin que quiconque croit en lui ne périsse point, mais qu'il ait la vie éternelle."</p>
-                <cite>– Jean 3:16</cite>
+                <p id="french-verse-content">Chargement du verset...</p>
+                <cite id="french-verse-reference"></cite>
             </blockquote>
+            <!-- Button to fetch a new random verse -->
+            <button id="new-french-verse" style="margin-top: 10px; padding: 8px 16px; background-color: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                🔄 Nouveau verset
+            </button>
         </section>
 
         <section id="audio">
@@ -58,6 +63,241 @@
         <p>&copy; 2026 Puits de Salut. Tous droits réservés.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- French verses script -->
+    <script>
+        // Array of 50 beautiful French Bible verses
+        const frenchVerses = [
+            // Salvation & Grace
+            {
+                text: "Car Dieu a tant aimé le monde qu'il a donné son Fils unique, afin que quiconque croit en lui ne périsse point, mais qu'il ait la vie éternelle.",
+                reference: "Jean 3:16"
+            },
+            {
+                text: "Mais Dieu prouve son amour envers nous, en ce que, lorsque nous étions encore des pécheurs, Christ est mort pour nous.",
+                reference: "Romains 5:8"
+            },
+            {
+                text: "Il n'y a donc maintenant aucune condamnation pour ceux qui sont en Jésus-Christ.",
+                reference: "Romains 8:1"
+            },
+            {
+                text: "Car c'est par la grâce que vous êtes sauvés, par le moyen de la foi. Et cela ne vient pas de vous, c'est le don de Dieu.",
+                reference: "Éphésiens 2:8"
+            },
+            {
+                text: "Mais à tous ceux qui l'ont reçue, à ceux qui croient en son nom, elle a donné le pouvoir de devenir enfants de Dieu.",
+                reference: "Jean 1:12"
+            },
+            // Faith & Trust
+            {
+                text: "Je puis tout par celui qui me fortifie.",
+                reference: "Philippiens 4:13"
+            },
+            {
+                text: "Jésus lui dit: Si tu peux! Tout est possible à celui qui croit.",
+                reference: "Marc 9:23"
+            },
+            {
+                text: "Or la foi est une ferme assurance des choses qu'on espère, une démonstration de celles qu'on ne voit pas.",
+                reference: "Hébreux 11:1"
+            },
+            {
+                text: "Car nous marchons par la foi et non par la vue.",
+                reference: "2 Corinthiens 5:7"
+            },
+            {
+                text: "Confie-toi en l'Éternel de tout ton cœur, et ne t'appuie pas sur ta sagesse.",
+                reference: "Proverbes 3:5"
+            },
+            // God's Love & Faithfulness
+            {
+                text: "L'Éternel est ma lumière et mon salut: de qui aurais-je crainte? L'Éternel est le soutien de ma vie: de qui aurais-je peur?",
+                reference: "Psaume 27:1"
+            },
+            {
+                text: "Car je suis persuadé que ni la mort ni la vie, ni les anges ni les dominations, ni les choses présentes ni les choses à venir, ni les puissances, ni la hauteur ni la profondeur, ni aucune autre créature ne pourra nous séparer de l'amour de Dieu manifesté en Jésus-Christ notre Seigneur.",
+                reference: "Romains 8:38-39"
+            },
+            {
+                text: "L'Éternel est bon pour tous, et ses compassions s'étendent sur toutes ses œuvres.",
+                reference: "Psaume 145:9"
+            },
+            {
+                text: "Car l'Éternel est bon; sa bonté dure toujours, et sa fidélité de génération en génération.",
+                reference: "Psaume 100:5"
+            },
+            {
+                text: "Mais toi, Seigneur, tu es un Dieu miséricordieux et compatissant, lent à la colère, riche en bonté et en fidélité.",
+                reference: "Psaume 86:15"
+            },
+            // Peace & Comfort
+            {
+                text: "Je vous laisse la paix, je vous donne ma paix. Je ne vous donne pas comme le monde donne. Que votre cœur ne se trouble point, et ne s'alarme point.",
+                reference: "Jean 14:27"
+            },
+            {
+                text: "Ne crains point, car je suis avec toi; ne promène pas des regards inquiets, car je suis ton Dieu; je te fortifie, je viens à ton secours, je te soutiens de ma droite triomphante.",
+                reference: "Ésaïe 41:10"
+            },
+            {
+                text: "Quand tu traverseras les eaux, je serai avec toi; et les fleuves, ils ne te submergeront pas; quand tu marcheras dans le feu, tu ne te brûleras pas, et la flamme ne t'embrasera pas.",
+                reference: "Ésaïe 43:2"
+            },
+            {
+                text: "Ne vous inquiétez de rien; mais en toute chose faites connaître vos besoins à Dieu par des prières et des supplications, avec des actions de grâces. Et la paix de Dieu, qui surpasse toute intelligence, gardera vos cœurs et vos pensées en Jésus-Christ.",
+                reference: "Philippiens 4:6-7"
+            },
+            {
+                text: "Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos.",
+                reference: "Matthieu 11:28"
+            },
+            // Strength & Courage
+            {
+                text: "Mais ceux qui se confient en l'Éternel renouvellent leur force. Ils prennent leur vol comme les aigles; ils courent et ne se lassent point, ils marchent et ne se fatiguent point.",
+                reference: "Ésaïe 40:31"
+            },
+            {
+                text: "Fortifie-toi et prends courage, ne t'effraie point et ne t'épouvante point, car l'Éternel, ton Dieu, est avec toi dans tout ce que tu entreprendras.",
+                reference: "Josué 1:9"
+            },
+            {
+                text: "Je puis tout par celui qui me fortifie.",
+                reference: "Philippiens 4:13"
+            },
+            {
+                text: "L'Éternel est ma force et mon bouclier; en lui mon cœur se confie, et je suis secouru; mon cœur a de la joie, et je le loue par mes chants.",
+                reference: "Psaume 28:7"
+            },
+            {
+                text: "Dieu est notre refuge et notre force, un secours qui ne manque jamais dans la détresse.",
+                reference: "Psaume 46:1"
+            },
+            // Hope & Promises
+            {
+                text: "Car je connais les projets que j'ai formés sur vous, dit l'Éternel, projets de paix et non de malheur, afin de vous donner un avenir et de l'espérance.",
+                reference: "Jérémie 29:11"
+            },
+            {
+                text: "Que le Dieu de l'espérance vous remplisse de toute joie et de toute paix dans la foi, pour que vous abondiez en espérance, par la puissance du Saint-Esprit.",
+                reference: "Romains 15:13"
+            },
+            {
+                text: "Nous savons, du reste, que toutes choses concourent au bien de ceux qui aiment Dieu, de ceux qui sont appelés selon son dessein.",
+                reference: "Romains 8:28"
+            },
+            {
+                text: "Car nos légères afflictions du moment présent produisent pour nous, au-delà de toute mesure, un poids éternel de gloire.",
+                reference: "2 Corinthiens 4:17"
+            },
+            {
+                text: "Que la grâce et la paix vous soient multipliées par la connaissance de Dieu et de Jésus notre Seigneur.",
+                reference: "2 Pierre 1:2"
+            },
+            // Wisdom & Guidance
+            {
+                text: "Si quelqu'un d'entre vous manque de sagesse, qu'il la demande à Dieu, qui donne à tous simplement et sans reproche, et elle lui sera donnée.",
+                reference: "Jacques 1:5"
+            },
+            {
+                text: "Reconnais-le dans toutes tes voies, et il aplanira tes sentiers.",
+                reference: "Proverbes 3:6"
+            },
+            {
+                text: "Ta parole est une lampe à mes pieds, et une lumière sur mon sentier.",
+                reference: "Psaume 119:105"
+            },
+            {
+                text: "Car la parole de Dieu est vivante et efficace, plus tranchante qu'une épée quelconque à deux tranchants, pénétrante jusqu'à partager âme et esprit, jointures et moelles; elle juge les sentiments et les pensées du cœur.",
+                reference: "Hébreux 4:12"
+            },
+            {
+                text: "L'instruction est une source de vie pour celui qui la reçoit, et le châtiment du sage est une couronne de gloire.",
+                reference: "Proverbes 13:14"
+            },
+            // Worship & Praise
+            {
+                text: "Que tout ce qui respire loue l'Éternel! Louez l'Éternel!",
+                reference: "Psaume 150:6"
+            },
+            {
+                text: "Entrez dans ses portes avec des louanges, dans ses parvis avec des cantiques! Célébrez-le, bénissez son nom!",
+                reference: "Psaume 100:4"
+            },
+            {
+                text: "Je bénirai l'Éternel en tout temps; sa louange sera toujours dans ma bouche.",
+                reference: "Psaume 34:1"
+            },
+            {
+                text: "Chantez à l'Éternel un cantique nouveau! Chantez à l'Éternel, vous tous, habitants de la terre!",
+                reference: "Psaume 96:1"
+            },
+            {
+                text: "Je t'offrirai un sacrifice d'actions de grâces, et j'invoquerai le nom de l'Éternel.",
+                reference: "Psaume 116:17"
+            },
+            // Overcoming Sin & Temptation
+            {
+                text: "Veillez et priez, afin que vous ne tombiez pas dans la tentation; l'esprit est bien disposé, mais la chair est faible.",
+                reference: "Matthieu 26:41"
+            },
+            {
+                text: "Aucune tentation ne vous est survenue qui n'ait été humaine, et Dieu, qui est fidèle, ne permettra pas que vous soyez tentés au-delà de vos forces; mais avec la tentation il préparera aussi le moyen d'en sortir, afin que vous puissiez la supporter.",
+                reference: "1 Corinthiens 10:13"
+            },
+            {
+                text: "Si nous confessons nos péchés, il est fidèle et juste pour nous les pardonner, et pour nous purifier de toute iniquité.",
+                reference: "1 Jean 1:9"
+            },
+            {
+                text: "Car le salaire du péché, c'est la mort; mais le don gratuit de Dieu, c'est la vie éternelle en Jésus-Christ notre Seigneur.",
+                reference: "Romains 6:23"
+            },
+            {
+                text: "Soumettons-nous donc à Dieu; résistons au diable, et il fuira loin de nous.",
+                reference: "Jacques 4:7"
+            },
+            // Eternal Life
+            {
+                text: "En vérité, en vérité, je vous le dis, celui qui croit en moi a la vie éternelle.",
+                reference: "Jean 6:47"
+            },
+            {
+                text: "Et voici ce témoignage, c'est que Dieu nous a donné la vie éternelle, et que cette vie est dans son Fils.",
+                reference: "1 Jean 5:11"
+            },
+            {
+                text: "Il essuiera toute larme de leurs yeux, et la mort ne sera plus, et il n'y aura plus ni deuil, ni cri, ni douleur, car les premières choses ont disparu.",
+                reference: "Apocalypse 21:4"
+            },
+            {
+                text: "Et c'est ici la vie éternelle, qu'ils te connaissent, toi, le seul vrai Dieu, et celui que tu as envoyé, Jésus-Christ.",
+                reference: "Jean 17:3"
+            },
+            {
+                text: "Je vous donne la vie éternelle; elles ne périront jamais, et personne ne les ravira de ma main.",
+                reference: "Jean 10:28"
+            }
+        ];
+
+        // Function to display a random French verse
+        function displayRandomFrenchVerse() {
+            const verseElement = document.getElementById('french-verse-content');
+            const refElement = document.getElementById('french-verse-reference');
+            
+            if (verseElement && refElement) {
+                const randomIndex = Math.floor(Math.random() * frenchVerses.length);
+                const selectedVerse = frenchVerses[randomIndex];
+                
+                verseElement.textContent = `"${selectedVerse.text}"`;
+                refElement.textContent = `– ${selectedVerse.reference}`;
+            }
+        }
+
+        // Run when page loads
+        window.addEventListener('load', displayRandomFrenchVerse);
+
+        // Add event listener for the "Nouveau verset" button
+        document.getElementById('new-french-verse')?.addEventListener('click', displayRandomFrenchVerse);
+    </script>
 </body>
 </html>
