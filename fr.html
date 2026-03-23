@@ -17,6 +17,7 @@
     <a href="#etude">Guides d'étude</a> |
     <a href="#audio">Messages audio</a> |
     <a href="blog/fr/index.html">Blogue</a>
+    <a href="signin.html" id="nav-auth">Sign In</a>
 </nav>
     </header>
 
@@ -299,5 +300,33 @@
         // Add event listener for the "Nouveau verset" button
         document.getElementById('new-french-verse')?.addEventListener('click', displayRandomFrenchVerse);
     </script>
+    <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+<script>
+    // 🔐 PASTE YOUR FIREBASE CONFIG HERE (same as above)
+     const firebaseConfig = {
+              apiKey: "AIzaSyCNXgUYO3ylocvjmnR4V6TvAU04iDUJW0Q",
+              authDomain: "wells-of-salvation.firebaseapp.com",
+              projectId: "wells-of-salvation",
+              storageBucket: "wells-of-salvation.firebasestorage.app",
+              messagingSenderId: "137343442147",
+              appId: "1:137343442147:web:3a3c81a660887954d9f9d6"
+
+        };
+
+    firebase.initializeApp(firebaseConfig);
+
+    firebase.auth().onAuthStateChanged(user => {
+        const navAuth = document.getElementById('nav-auth');
+        if (user) {
+            navAuth.textContent = 'Profile';
+            navAuth.href = 'profile.html';
+        } else {
+            navAuth.textContent = 'Sign In';
+            navAuth.href = 'signin.html';
+        }
+    });
+</script>
 </body>
 </html>
