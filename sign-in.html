@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Wells of Salvation</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FirebaseUI CSS -->
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
+</head>
+<body>
+    <header>
+        <h1>⛲ Wells of Salvation</h1>
+        <p><em>"With joy you will draw water from the wells of salvation." – Isaiah 12:3</em></p>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="#bible">Bible</a> |
+            <a href="#study">Study Guides</a> |
+            <a href="#audio">Audio Messages</a> |
+            <a href="fr.html">Français</a> |
+            
+        </nav>
+    </header>
+
+    <main>
+        <section id="auth-container" style="max-width: 500px; margin: 0 auto; padding: 20px;">
+            <h2>Welcome Back!</h2>
+            <div id="firebaseui-auth-container"></div>
+            <div id="loader">Loading...</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Wells of Salvation. All rights reserved.</p>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <!-- FirebaseUI -->
+    <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
+
+    <script>
+        // 🔐 PASTE YOUR FIREBASE CONFIG HERE
+        const firebaseConfig = {
+              apiKey: "AIzaSyCNXgUYO3ylocvjmnR4V6TvAU04iDUJW0Q",
+              authDomain: "wells-of-salvation.firebaseapp.com",
+              projectId: "wells-of-salvation",
+              storageBucket: "wells-of-salvation.firebasestorage.app",
+              messagingSenderId: "137343442147",
+              appId: "1:137343442147:web:3a3c81a660887954d9f9d6"
+
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // FirebaseUI config
+        const ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+        const uiConfig = {
+            signInSuccessUrl: 'profile.html', // redirect after login
+            signInOptions: [
+                {
+                    provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                    requireDisplayName: true
+                }
+            ],
+            tosUrl: 'index.html',
+            privacyPolicyUrl: 'index.html',
+            callbacks: {
+                uiShown: () => document.getElementById('loader').style.display = 'none'
+            }
+        };
+
+        ui.start('#firebaseui-auth-container', uiConfig);
+
+        // Update navigation based on auth state
+        firebase.auth().onAuthStateChanged(user => {
+            const navAuth = document.getElementById('nav-auth');
+            if (user) {
+                navAuth.textContent = 'Profile';
+                navAuth.href = 'profile.html';
+            } else {
+                navAuth.textContent = 'Sign In';
+                navAuth.href = 'signin.html';
+            }
+        });
+    </script>
+</body>
+</html>

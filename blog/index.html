@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Wells of Salvation</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>⛲ Wells of Salvation</h1>
+        <p><em>"With joy you will draw water from the wells of salvation." – Isaiah 12:3</em></p>
+        <nav>
+            <a href="../index.html">Home</a> |
+            <a href="../bible.html">Bible</a> |
+            <a href="../index.html#study">Study Guides</a> |
+            <a href="../index.html#audio">Audio Messages</a> |
+            <a href="index.html">Blog (EN)</a> |
+            <a href="fr/index.html">Blogue (FR)</a>
+            <a href="signin.html" id="nav-auth">Sign In</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="blog">
+            <h2>📝 Blog</h2>
+            <p>Thoughts, devotions, and teachings to encourage your walk with God.</p>
+
+            <!-- Blog Post 1 -->
+            <article class="blog-post">
+                <h3><a href="post1.html">Overcoming Sin Through Grace</a></h3>
+                <p class="post-meta">Posted on March 1, 2026</p>
+                <p class="post-excerpt">Grace is not a license to sin, but the power to overcome it. In this post, we explore how God's grace transforms us from the inside out...</p>
+                <p><a href="post1.html" class="read-more">Read More →</a></p>
+            </article>
+
+            <!-- Blog Post 2 -->
+            <article class="blog-post">
+                <h3><a href="post2.html">The Power of Prayer</a></h3>
+                <p class="post-meta">Posted on February 15, 2026</p>
+                <p class="post-excerpt">Prayer is our lifeline to God. Discover how persistent, faith-filled prayer can move mountains and bring peace in turmoil...</p>
+                <p><a href="post2.html" class="read-more">Read More →</a></p>
+            </article>
+
+            <!-- Add more posts as needed -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Wells of Salvation. All rights reserved.</p>
+    </footer>
+    <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+<script>
+    // 🔐 PASTE YOUR FIREBASE CONFIG HERE (same as above)
+    const firebaseConfig = {
+              apiKey: "AIzaSyCNXgUYO3ylocvjmnR4V6TvAU04iDUJW0Q",
+              authDomain: "wells-of-salvation.firebaseapp.com",
+              projectId: "wells-of-salvation",
+              storageBucket: "wells-of-salvation.firebasestorage.app",
+              messagingSenderId: "137343442147",
+              appId: "1:137343442147:web:3a3c81a660887954d9f9d6"
+
+        };
+    
+    firebase.initializeApp(firebaseConfig);
+
+    firebase.auth().onAuthStateChanged(user => {
+        const navAuth = document.getElementById('nav-auth');
+        if (user) {
+            navAuth.textContent = 'Profile';
+            navAuth.href = 'profile.html';
+        } else {
+            navAuth.textContent = 'Sign In';
+            navAuth.href = 'signin.html';
+        }
+    });
+</script>
+</body>
+</html>

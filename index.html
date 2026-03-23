@@ -122,7 +122,10 @@
     firebase.initializeApp(firebaseConfig);
 
     firebase.auth().onAuthStateChanged(user => {
-        const navAuth = document.getElementById('nav-auth');
+    console.log('Auth state changed. User:', user); // <-- add this
+    const navAuth = document.getElementById('nav-auth');
+    
+});
         if (user) {
             navAuth.textContent = 'Profile';
             navAuth.href = 'profile.html';
@@ -130,7 +133,7 @@
             navAuth.textContent = 'Sign In';
             navAuth.href = 'signin.html';
         }
-    });
+   
 </script>   
 
 </body>

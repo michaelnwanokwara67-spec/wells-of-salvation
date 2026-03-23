@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overcoming Sin Through Grace - Wells of Salvation</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>⛲ Wells of Salvation</h1>
+        <p><em>"With joy you will draw water from the wells of salvation." – Isaiah 12:3</em></p>
+        <nav>
+            <a href="../index.html">Home</a> |
+            <a href="../index.html#bible">Bible</a> |
+            <a href="../index.html#study">Study Guides</a> |
+            <a href="../index.html#audio">Audio Messages</a> |
+            <a href="index.html">Blog</a> |
+            <a href="../fr.html">Français</a>
+            <a href="signin.html" id="nav-auth">Sign In</a>
+        </nav>
+    </header>
+
+    <main>
+        <article class="blog-post-full">
+            <h2>Overcoming Sin Through Grace</h2>
+            <p class="post-meta">Posted on March 1, 2026</p>
+
+            <p>Grace is one of the most misunderstood concepts in Christianity. Some think it's a free pass to sin; others believe it's just unmerited favor. But grace is so much more—it's the power of God at work in us to transform our lives.</p>
+
+            <p>In Romans 6:14, Paul writes, "For sin shall no longer be your master, because you are not under the law, but under grace." Being under grace doesn't mean we can sin freely; it means we have been set free from sin's dominion. The same grace that saved us also teaches us to say "No" to ungodliness (Titus 2:11-12).</p>
+
+            <p>When we struggle with a particular sin, we often try harder in our own strength. But the key is to rely on the Holy Spirit and the grace He supplies. As we abide in Christ, His life flows through us, producing fruit that includes self-control.</p>
+
+            <p>Practical steps to overcome sin:</p>
+            <ul>
+                <li><strong>Renew your mind</strong> with Scripture (Romans 12:2).</li>
+                <li><strong>Confess and repent</strong> quickly when you fall (1 John 1:9).</li>
+                <li><strong>Find an accountability partner</strong> who will pray with you.</li>
+                <li><strong>Meditate on God's love</strong>—perfect love casts out fear and gives us strength.</li>
+            </ul>
+
+            <p>Remember, it's not about perfection but direction. Keep your eyes on Jesus, and His grace will carry you through.</p>
+
+            <p><a href="index.html">← Back to Blog</a></p>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Wells of Salvation. All rights reserved.</p>
+    </footer>
+    <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+<script>
+    // 🔐 PASTE YOUR FIREBASE CONFIG HERE (same as above)
+      const firebaseConfig = {
+              apiKey: "AIzaSyCNXgUYO3ylocvjmnR4V6TvAU04iDUJW0Q",
+              authDomain: "wells-of-salvation.firebaseapp.com",
+              projectId: "wells-of-salvation",
+              storageBucket: "wells-of-salvation.firebasestorage.app",
+              messagingSenderId: "137343442147",
+              appId: "1:137343442147:web:3a3c81a660887954d9f9d6"
+
+        };
+
+    firebase.initializeApp(firebaseConfig);
+
+    firebase.auth().onAuthStateChanged(user => {
+        const navAuth = document.getElementById('nav-auth');
+        if (user) {
+            navAuth.textContent = 'Profile';
+            navAuth.href = 'profile.html';
+        } else {
+            navAuth.textContent = 'Sign In';
+            navAuth.href = 'signin.html';
+        }
+    });
+</script>
+</body>
+</html>
