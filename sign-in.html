@@ -54,6 +54,7 @@
         const uiConfig = {
             signInSuccessUrl: 'profile.html', // redirect after login
             signInOptions: [
+                 firebase.auth.GoogleAuthProvider.PROVIDER_ID, //
                 {
                     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
                     requireDisplayName: true

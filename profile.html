@@ -12,21 +12,30 @@
         <p><em>"With joy you will draw water from the wells of salvation." – Isaiah 12:3</em></p>
         <nav>
             <a href="index.html">Home</a> |
-            <a href="#bible">Bible</a> |
+            <a href="bible.html">Bible</a> |
             <a href="#study">Study Guides</a> |
             <a href="#audio">Audio Messages</a> |
+            <a href="blog/index.html">Blog</a> |
             <a href="fr.html">Français</a> |
             <a href="signin.html" id="nav-auth">Sign In</a>
         </nav>
     </header>
 
     <main>
-        <section style="max-width: 600px; margin: 0 auto; padding: 20px;">
+        <section style="max-width: 800px; margin: 0 auto; padding: 20px;">
             <h2>My Profile</h2>
             <div id="user-info" style="background: #ecf0f1; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
                 Loading...
             </div>
-            <button id="sign-out" style="padding: 10px 20px; background-color: #c0392b; color: white; border: none; border-radius: 4px; cursor: pointer;">Sign Out</button>
+
+            <h3>📖 Saved Verses</h3>
+            <div id="saved-verses" style="margin: 20px 0;">
+                <ul id="verses-list"></ul>
+                <input type="text" id="new-verse" placeholder="Enter a verse (e.g., John 3:16)" style="width: 70%; padding: 10px; margin-right: 10px;">
+                <button id="save-verse" style="padding: 10px 20px; background-color: #2c3e50; color: white; border: none; border-radius: 4px;">Save Verse</button>
+            </div>
+
+            <button id="sign-out" style="padding: 10px 20px; background-color: #c0392b; color: white; border: none; border-radius: 4px;">Sign Out</button>
             <p><a href="index.html">← Back to Home</a></p>
         </section>
     </main>
@@ -38,26 +47,31 @@
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <script>
-        // 🔐 PASTE THE SAME FIREBASE CONFIG HERE
         const firebaseConfig = {
-              apiKey: "AIzaSyCNXgUYO3ylocvjmnR4V6TvAU04iDUJW0Q",
-              authDomain: "wells-of-salvation.firebaseapp.com",
-              projectId: "wells-of-salvation",
-              storageBucket: "wells-of-salvation.firebasestorage.app",
-              messagingSenderId: "137343442147",
-              appId: "1:137343442147:web:3a3c81a660887954d9f9d6"
-
+            apiKey: "AIzaSyCNXgUYO3ylocvjmnR4V6TvAU04iDUJW0Q",
+            authDomain: "wells-of-salvation.firebaseapp.com",
+            projectId: "wells-of-salvation",
+            storageBucket: "wells-of-salvation.firebasestorage.app",
+            messagingSenderId: "137343442147",
+            appId: "1:137343442147:web:3a3c81a660887954d9f9d6"
         };
 
         firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
 
         const userInfoDiv = document.getElementById('user-info');
-        const navAuth = document.getElementById('nav-auth');
+        const versesList = document.getElementById('verses-list');
+        const newVerseInput = document.getElementById('new-verse');
+        const saveVerseBtn = document.getElementById('save-verse');
         const signOutBtn = document.getElementById('sign-out');
+        const navAuth = document.getElementById('nav-auth');
 
-        firebase.auth().onAuthStateChanged(user => {
+        // Load user data when signed in
+        auth.onAuthStateChanged(async user => {
             if (user) {
                 // Display user info
                 userInfoDiv.innerHTML = `
@@ -67,17 +81,56 @@
                 `;
                 navAuth.textContent = 'Profile';
                 navAuth.href = 'profile.html';
+
+                // Load saved verses from Firestore
+                const docRef = db.collection('users').doc(user.uid);
+                const docSnap = await docRef.get();
+                
+                if (docSnap.exists) {
+                    const verses = docSnap.data().verses || [];
+                    versesList.innerHTML = '';
+                    verses.forEach(verse => {
+                        const li = document.createElement('li');
+                        li.textContent = verse;
+                        versesList.appendChild(li);
+                    });
+                } else {
+                    // First time user – create an empty document
+                    await docRef.set({ verses: [] });
+                }
+
+                // Save new verse
+                saveVerseBtn.onclick = async () => {
+                    const newVerse = newVerseInput.value.trim();
+                    if (newVerse) {
+                        const docRef = db.collection('users').doc(user.uid);
+                        const docSnap = await docRef.get();
+                        const currentVerses = docSnap.exists ? docSnap.data().verses : [];
+                        const updatedVerses = [...currentVerses, newVerse];
+                        await docRef.set({ verses: updatedVerses });
+                        
+                        // Refresh the list
+                        versesList.innerHTML = '';
+                        updatedVerses.forEach(verse => {
+                            const li = document.createElement('li');
+                            li.textContent = verse;
+                            versesList.appendChild(li);
+                        });
+                        newVerseInput.value = '';
+                    }
+                };
             } else {
                 // Not logged in – redirect to signin
                 window.location.href = 'signin.html';
             }
         });
 
-        signOutBtn.addEventListener('click', () => {
-            firebase.auth().signOut().then(() => {
+        // Sign out
+        signOutBtn.onclick = () => {
+            auth.signOut().then(() => {
                 window.location.href = 'index.html';
-            }).catch(error => alert('Error signing out: ' + error.message));
-        });
+            });
+        };
     </script>
 </body>
 </html>
