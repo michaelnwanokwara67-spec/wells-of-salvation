@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Guides - Wells of Salvation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .study-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .topics-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .topic-btn {
+            padding: 10px 16px;
+            background: #ecf0f1;
+            border: 2px solid #2c3e50;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #2c3e50;
+        }
+
+        .topic-btn:hover {
+            background: #2c3e50;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .topic-btn.active {
+            background: #2c3e50;
+            color: white;
+            border-color: #1a252f;
+        }
+
+        .study-content {
+            background: white;
+            border-left: 5px solid #2c3e50;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .study-content.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .study-content h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+
+        .study-content h4 {
+            color: #34495e;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .study-content p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .study-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .study-content li {
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .key-verse {
+            background: #ecf0f1;
+            padding: 15px;
+            border-left: 4px solid #2c3e50;
+            margin: 15px 0;
+            font-style: italic;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>⛲ Wells of Salvation</h1>
+        <p><em>"With joy you will draw water from the wells of salvation." – Isaiah 12:3</em></p>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="bible.html">Bible</a> |
+            <a href="study-guides.html">Study Guides</a> |
+            <a href="music.html">Music</a> |
+            <a href="blog/index.html">Blog</a> |
+            <a href="movies.html">Movies</a> |
+            <a href="fr.html">Français</a> |
+            <a href="sign-in.html" id="nav-auth">Sign In</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="study-container">
+            <h2>📚 Study Guides</h2>
+            
+            <div class="topics-list">
+                <button class="topic-btn active" onclick="showGuide('overcoming-sin')">Overcoming Sin Through Grace</button>
+                <button class="topic-btn" onclick="showGuide('faith-trust')">Faith & Trust in Jesus</button>
+                <button class="topic-btn" onclick="showGuide('fruits-spirit')">Fruits of the Spirit</button>
+                <button class="topic-btn" onclick="showGuide('prayer-power')">The Power of Prayer</button>
+                <button class="topic-btn" onclick="showGuide('forgiveness')">Forgiveness & Restoration</button>
+                <button class="topic-btn" onclick="showGuide('armor-god')">Armor of God</button>
+            </div>
+
+            <!-- Study Guide 1: Overcoming Sin Through Grace -->
+            <div id="overcoming-sin" class="study-content active">
+                <h3>Overcoming Sin Through Grace</h3>
+                
+                <h4>Introduction</h4>
+                <p>One of the central truths of Christian faith is that we are saved not by our works, but by the grace of God through Jesus Christ. This study guide explores how God's grace empowers us to overcome sin and live victoriously.</p>
+                
+                <div class="key-verse">
+                    "God's grace has appeared that offers salvation to all people." – Titus 2:11
+                </div>
+
+                <h4>What is Grace?</h4>
+                <p>Grace is God's unmerited favor—His loving-kindness toward us that we do not deserve. It is:</p>
+                <ul>
+                    <li><strong>Free:</strong> We cannot earn it through our works or efforts</li>
+                    <li><strong>Powerful:</strong> Grace transforms our hearts and gives us strength</li>
+                    <li><strong>Sufficient:</strong> It covers all our sins, past, present, and future</li>
+                    <li><strong>Continuous:</strong> God's grace is new every morning</li>
+                </ul>
+
+                <h4>How Grace Overcomes Sin</h4>
+                <p>Sin separates us from God and produces death. However, grace provides the antidote:</p>
+                <ul>
+                    <li>Grace forgives our sins and removes the penalty of death</li>
+                    <li>Grace gives us the Holy Spirit to resist temptation</li>
+                    <li>Grace empowers us to turn from sin and follow Jesus</li>
+                    <li>Grace breaks the cycle of guilt and shame</li>
+                </ul>
+
+                <div class="key-verse">
+                    "For sin shall no longer be your master, because you are not under the law, but under grace." – Romans 6:14
+                </div>
+
+                <h4>Steps to Overcoming Sin Through Grace</h4>
+                <ol>
+                    <li><strong>Acknowledge your sin:</strong> Confess to God and admit you cannot overcome it alone</li>
+                    <li><strong>Receive God's forgiveness:</strong> Accept Christ's sacrifice for your sins</li>
+                    <li><strong>Surrender to the Spirit:</strong> Ask the Holy Spirit to empower you daily</li>
+                    <li><strong>Renew your mind:</strong> Study Scripture and replace sinful thoughts with God's truth</li>
+                    <li><strong>Seek accountability:</strong> Find Christian brothers and sisters to walk with you</li>
+                    <li><strong>Practice obedience:</strong> Make daily choices to follow Jesus</li>
+                </ol>
+
+                <h4>Reflection Questions</h4>
+                <ul>
+                    <li>How has God's grace changed your life?</li>
+                    <li>What specific sin are you struggling to overcome?</li>
+                    <li>How can you better appropriate God's grace in your daily life?</li>
+                </ul>
+            </div>
+
+            <!-- Study Guide 2: Faith & Trust in Jesus -->
+            <div id="faith-trust" class="study-content">
+                <h3>Faith & Trust in Jesus</h3>
+                
+                <h4>Introduction</h4>
+                <p>Faith is not just intellectual belief, but a deep trust in Jesus Christ and His promises. This guide explores what it means to have genuine faith in Jesus.</p>
+                
+                <div class="key-verse">
+                    "Now faith is confidence in what we hope for and assurance about what we do not see." – Hebrews 11:1
+                </div>
+
+                <h4>What is Faith?</h4>
+                <p>Biblical faith involves three components:</p>
+                <ul>
+                    <li><strong>Knowledge (Notitia):</strong> Understanding who Jesus is and what He taught</li>
+                    <li><strong>Agreement (Assensus):</strong> Agreeing that what the Bible teaches is true</li>
+                    <li><strong>Trust (Fiducia):</strong> Personally trusting in Jesus as your Savior</li>
+                </ul>
+
+                <h4>Why Faith Matters</h4>
+                <p>Faith is essential for salvation and the Christian life:</p>
+                <ul>
+                    <li>We are justified by faith, not by works</li>
+                    <li>Faith pleases God</li>
+                    <li>Faith gives us access to God's promises</li>
+                    <li>Faith enables us to overcome the world</li>
+                </ul>
+
+                <div class="key-verse">
+                    "For it is by grace you have been saved, through faith—and this is not from yourselves, it is the gift of God." – Ephesians 2:8
+                </div>
+
+                <h4>Growing Your Faith</h4>
+                <ul>
+                    <li>Study God's Word regularly</li>
+                    <li>Pray and communicate with God</li>
+                    <li>Praise God even in difficult times</li>
+                    <li>Fellowship with other believers</li>
+                    <li>Test your faith through obedience</li>
+                </ul>
+
+                <h4>Reflection Questions</h4>
+                <ul>
+                    <li>What does faith in Jesus mean to you personally?</li>
+                    <li>In what area of your life is God calling you to have greater faith?</li>
+                    <li>How can you strengthen your trust in Jesus?</li>
+                </ul>
+            </div>
+
+            <!-- Study Guide 3: Fruits of the Spirit -->
+            <div id="fruits-spirit" class="study-content">
+                <h3>Fruits of the Spirit</h3>
+                
+                <h4>Introduction</h4>
+                <p>The Holy Spirit produces spiritual fruit in the lives of believers. These nine virtues reflect the character of Jesus and should be evident in every Christian's life.</p>
+                
+                <div class="key-verse">
+                    "The fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control." – Galatians 5:22-23
+                </div>
+
+                <h4>The Nine Fruits</h4>
+                <ul>
+                    <li><strong>Love:</strong> Sacrificial, unconditional love that seeks the good of others</li>
+                    <li><strong>Joy:</strong> Deep happiness rooted in God's presence and promises</li>
+                    <li><strong>Peace:</strong> Calm assurance in God's sovereignty and care</li>
+                    <li><strong>Forbearance:</strong> Patient endurance in difficult circumstances</li>
+                    <li><strong>Kindness:</strong> Gentle compassion toward others</li>
+                    <li><strong>Goodness:</strong> Moral excellence and generosity</li>
+                    <li><strong>Faithfulness:</strong> Loyalty and reliability in all things</li>
+                    <li><strong>Gentleness:</strong> Humility and meekness before God and others</li>
+                    <li><strong>Self-Control:</strong> Mastery over fleshly desires and impulses</li>
+                </ul>
+
+                <h4>How the Spirit Produces Fruit</h4>
+                <p>The Holy Spirit grows these fruits through:</p>
+                <ul>
+                    <li>Abiding in Christ daily</li>
+                    <li>Yielding to the Spirit's prompting</li>
+                    <li>Pruning through trials and discipline</li>
+                    <li>Feeding on God's Word</li>
+                </ul>
+
+                <h4>Reflection Questions</h4>
+                <ul>
+                    <li>Which fruit of the Spirit is most evident in your life?</li>
+                    <li>Which fruit needs the most growth?</li>
+                    <li>How can you cooperate with the Spirit to produce more fruit?</li>
+                </ul>
+            </div>
+
+            <!-- Study Guide 4: Power of Prayer -->
+            <div id="prayer-power" class="study-content">
+                <h3>The Power of Prayer</h3>
+                
+                <h4>Introduction</h4>
+                <p>Prayer is our direct line of communication with God. It is one of the most powerful spiritual disciplines available to us. This guide explores what makes prayer powerful and how to pray effectively.</p>
+                
+                <div class="key-verse">
+                    "The prayer of a righteous person is powerful and effective." – James 5:16
+                </div>
+
+                <h4>Elements of Effective Prayer</h4>
+                <ul>
+                    <li><strong>Adoration:</strong> Praise God for who He is</li>
+                    <li><strong>Confession:</strong> Acknowledge your sins and receive forgiveness</li>
+                    <li><strong>Thanksgiving:</strong> Thank God for His blessings and provision</li>
+                    <li><strong>Intercession:</strong> Pray for others' needs</li>
+                    <li><strong>Petition:</strong> Present your own requests to God</li>
+                </ul>
+
+                <h4>Conditions for Answered Prayer</h4>
+                <ul>
+                    <li>Believe that God answers prayer</li>
+                    <li>Pray according to God's will</li>
+                    <li>Maintain a right relationship with God through repentance</li>
+                    <li>Pray in faith without doubting</li>
+                    <li>Forgive others as part of your intercession</li>
+                </ul>
+
+                <h4>Reflection Questions</h4>
+                <ul>
+                    <li>How often do you spend time in prayer?</li>
+                    <li>What prevents you from praying more?</li>
+                    <li>How can you deepen your prayer life?</li>
+                </ul>
+            </div>
+
+            <!-- Study Guide 5: Forgiveness & Restoration -->
+            <div id="forgiveness" class="study-content">
+                <h3>Forgiveness & Restoration</h3>
+                
+                <h4>Introduction</h4>
+                <p>Forgiveness is at the heart of the Gospel. Jesus taught us to forgive as we have been forgiven. This study explores the power of forgiveness and the path to restoration.</p>
+                
+                <div class="key-verse">
+                    "For if you forgive other people when they sin against you, your heavenly Father will also forgive you." – Matthew 18:14
+                </div>
+
+                <h4>What Forgiveness Is Not</h4>
+                <ul>
+                    <li>It is not condoning or excusing the wrong</li>
+                    <li>It is not dismissing justice</li>
+                    <li>It is not pretending it didn't happen</li>
+                    <li>It is not always about restoration</li>
+                </ul>
+
+                <h4>What Forgiveness Is</h4>
+                <p>True forgiveness is:</p>
+                <ul>
+                    <li>Choosing to release resentment and bitterness</li>
+                    <li>Letting go of the debt owed to you</li>
+                    <li>Extending grace to the offender</li>
+                    <li>Freeing yourself from unforgiveness</li>
+                </ul>
+
+                <h4>Steps to Forgiveness</h4>
+                <ul>
+                    <li>Acknowledge the hurt and pain</li>
+                    <li>Choose to forgive, even if you don't feel like it</li>
+                    <li>Release the desire for revenge</li>
+                    <li>Ask God to heal your heart</li>
+                    <li>Seek restoration when possible and safe</li>
+                </ul>
+
+                <h4>Reflection Questions</h4>
+                <ul>
+                    <li>Is there someone you need to forgive?</li>
+                    <li>What is holding you back from forgiveness?</li>
+                    <li>How has unforgiveness affected your life?</li>
+                </ul>
+            </div>
+
+            <!-- Study Guide 6: Armor of God -->
+            <div id="armor-god" class="study-content">
+                <h3>Armor of God</h3>
+                
+                <h4>Introduction</h4>
+                <p>The Christian life involves spiritual warfare. God provides us with armor to stand against spiritual forces of darkness. This study explores the armor we are called to wear.</p>
+                
+                <div class="key-verse">
+                    "Put on the full armor of God so that you can take your stand against the devil's schemes." – Ephesians 6:11
+                </div>
+
+                <h4>The Six Pieces of Armor</h4>
+                <ul>
+                    <li><strong>Belt of Truth:</strong> Know and live in God's truth; Jesus is the Truth</li>
+                    <li><strong>Breastplate of Righteousness:</strong> Live a holy life and maintain right standing with God</li>
+                    <li><strong>Shoes of the Gospel of Peace:</strong> Be ready to share the good news and walk in peace</li>
+                    <li><strong>Shield of Faith:</strong> Trust in God's promises and character</li>
+                    <li><strong>Helmet of Salvation:</strong> Have confidence in your salvation through Christ</li>
+                    <li><strong>Sword of the Spirit:</strong> God's Word is your offensive weapon against lies</li>
+                </ul>
+
+                <h4>How to Put On Your Armor Daily</h4>
+                <ul>
+                    <li>Start your day in prayer</li>
+                    <li>Meditate on God's Word and truth</li>
+                    <li>Confess Jesus as Lord and Savior</li>
+                    <li>Commit to living according to God's righteousness</li>
+                    <li>Trust God's promises and stand firm in faith</li>
+                    <li>Pray and intercede for others</li>
+                </ul>
+
+                <h4>Reflection Questions</h4>
+                <ul>
+                    <li>What spiritual battles are you currently facing?</li>
+                    <li>Which piece of armor do you most need?</li>
+                    <li>How will you put on God's armor daily?</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Wells of Salvation. All rights reserved.</p>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCNXgUYO3ylocvjmnR4V6TvAU04iDUJW0Q",
+            authDomain: "wells-of-salvation.firebaseapp.com",
+            projectId: "wells-of-salvation",
+            storageBucket: "wells-of-salvation.firebasestorage.app",
+            messagingSenderId: "137343442147",
+            appId: "1:137343442147:web:3a3c81a660887954d9f9d6"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        firebase.auth().onAuthStateChanged(user => {
+            const navAuth = document.getElementById('nav-auth');
+            if (user) {
+                navAuth.textContent = 'Profile';
+                navAuth.href = 'profile.html';
+            } else {
+                navAuth.textContent = 'Sign In';
+                navAuth.href = 'sign-in.html';
+                // Redirect to sign-in if not authenticated
+                window.location.href = 'sign-in.html';
+            }
+        });
+
+        // Study Guide Toggle Function
+        function showGuide(guideId) {
+            // Hide all guides
+            const guides = document.querySelectorAll('.study-content');
+            guides.forEach(guide => guide.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.topic-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected guide
+            document.getElementById(guideId).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+
+            // Scroll to content
+            document.querySelector('.study-content.active').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>

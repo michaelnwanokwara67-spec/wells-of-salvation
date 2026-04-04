@@ -13,11 +13,12 @@
         <nav>
     <a href="index.html">Home</a> |
     <a href="bible.html">Bible</a> |
-    <a href="#study">Study Guides</a> |
-    <a href="#audio">Audio Messages</a> |
+    <a href="study-guides.html">Study Guides</a> |
+    <a href="music.html">Music</a> |
     <a href="blog/index.html">Blog</a> |
+    <a href="movies.html">Movies</a> |
     <a href="fr.html">Français</a> |
-    <a href="signin.html" id="nav-auth">Sign In</a>
+    <a href="sign-in.html" id="nav-auth">Sign In</a>
 </nav>
     </header>
 
@@ -122,17 +123,17 @@
     firebase.initializeApp(firebaseConfig);
 
     firebase.auth().onAuthStateChanged(user => {
-    console.log('Auth state changed. User:', user); // <-- add this
-    const navAuth = document.getElementById('nav-auth');
-    
-});
+        const navAuth = document.getElementById('nav-auth');
         if (user) {
             navAuth.textContent = 'Profile';
             navAuth.href = 'profile.html';
         } else {
             navAuth.textContent = 'Sign In';
-            navAuth.href = 'signin.html';
+            navAuth.href = 'sign-in.html';
+            // Redirect unauthenticated users to sign-in page
+            window.location.href = 'sign-in.html';
         }
+    });
    
 </script>   
 

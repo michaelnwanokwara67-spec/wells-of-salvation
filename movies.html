@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies - Wells of Salvation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        .video-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .video-item video {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+        .video-title {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>⛲ Wells of Salvation</h1>
+        <p><em>"With joy you will draw water from the wells of salvation." – Isaiah 12:3</em></p>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="bible.html">Bible</a> |
+            <a href="study-guides.html">Study Guides</a> |
+            <a href="music.html">Music</a> |
+            <a href="blog/index.html">Blog</a> |
+            <a href="movies.html">Movies</a> |
+            <a href="fr.html">Français</a> |
+            <a href="sign-in.html" id="nav-auth">Sign In</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="movies">
+            <h2>🎥 Movies</h2>
+            <div class="video-list">
+                <div class="video-item">
+                    <video controls>
+                        <source src="https://drive.google.com/uc?export=download&id=PLACEHOLDER_VIDEO_ID_1" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-title">Movie Title 1</div>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="https://drive.google.com/uc?export=download&id=PLACEHOLDER_VIDEO_ID_2" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-title">Movie Title 2</div>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="https://drive.google.com/uc?export=download&id=PLACEHOLDER_VIDEO_ID_3" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-title">Movie Title 3</div>
+                </div>
+                <!-- Add more video items as needed -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Wells of Salvation. All rights reserved.</p>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCNXgUYO3ylocvjmnR4V6TvAU04iDUJW0Q",
+            authDomain: "wells-of-salvation.firebaseapp.com",
+            projectId: "wells-of-salvation",
+            storageBucket: "wells-of-salvation.firebasestorage.app",
+            messagingSenderId: "137343442147",
+            appId: "1:137343442147:web:3a3c81a660887954d9f9d6"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        firebase.auth().onAuthStateChanged(user => {
+            const navAuth = document.getElementById('nav-auth');
+            if (user) {
+                navAuth.textContent = 'Profile';
+                navAuth.href = 'profile.html';
+            } else {
+                navAuth.textContent = 'Sign In';
+                navAuth.href = 'sign-in.html';
+                // Redirect to sign-in if not authenticated
+                window.location.href = 'sign-in.html';
+            }
+        });
+    </script>
+</body>
+</html>

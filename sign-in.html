@@ -5,8 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In - Wells of Salvation</title>
     <link rel="stylesheet" href="style.css">
-    <!-- FirebaseUI CSS -->
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
+    <style>
+        #auth-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+        }
+        .auth-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .auth-toggle button {
+            flex: 1;
+            padding: 0.9rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #f7f7f7;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .auth-toggle button.active {
+            background: #2c3e50;
+            color: #fff;
+            border-color: #2c3e50;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem 0.95rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .primary-btn,
+        .secondary-btn {
+            width: 100%;
+            padding: 0.95rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .primary-btn {
+            background: #2c3e50;
+            color: white;
+            margin-top: 0.5rem;
+        }
+        .secondary-btn {
+            background: #2c3e50;
+            color: white;
+            margin-top: 0.5rem;
+        }
+        .divider {
+            text-align: center;
+            margin: 1.2rem 0;
+            color: #666;
+        }
+        .hidden {
+            display: none;
+        }
+        .message {
+            margin-top: 1rem;
+            padding: 0.9rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .message.error {
+            background: #ffe6e6;
+            color: #9b1c1c;
+            border: 1px solid #f1c0c0;
+        }
+        .message.success {
+            background: #e6f4ea;
+            color: #1f5d2e;
+            border: 1px solid #c6e1cd;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,10 +101,38 @@
     </header>
 
     <main>
-        <section id="auth-container" style="max-width: 500px; margin: 0 auto; padding: 20px;">
-            <h2>Welcome Back!</h2>
-            <div id="firebaseui-auth-container"></div>
-            <div id="loader">Loading...</div>
+        <section id="auth-container">
+            <h2>Sign In or Create an Account</h2>
+            <div class="auth-toggle">
+                <button type="button" id="signInTab" class="active">Sign In</button>
+                <button type="button" id="signUpTab">Sign Up</button>
+            </div>
+
+            <form id="auth-form">
+                <div id="display-name-field" class="form-group hidden">
+                    <label for="display-name">Full Name</label>
+                    <input type="text" id="display-name" placeholder="Your full name" autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" id="auth-submit" class="primary-btn">Sign In</button>
+            </form>
+
+            <div class="divider"><span>OR</span></div>
+
+            <button type="button" id="google-signin" class="secondary-btn">Continue with Google</button>
+
+            <p id="auth-note">Use the tabs to switch between signing in and registering a new account.</p>
+            <div id="auth-message" class="message hidden"></div>
         </section>
     </main>
 
@@ -30,54 +143,95 @@
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-    <!-- FirebaseUI -->
-    <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
 
     <script>
-        // 🔐 PASTE YOUR FIREBASE CONFIG HERE
         const firebaseConfig = {
-              apiKey: "AIzaSyCNXgUYO3ylocvjmnR4V6TvAU04iDUJW0Q",
-              authDomain: "wells-of-salvation.firebaseapp.com",
-              projectId: "wells-of-salvation",
-              storageBucket: "wells-of-salvation.firebasestorage.app",
-              messagingSenderId: "137343442147",
-              appId: "1:137343442147:web:3a3c81a660887954d9f9d6"
-
+            apiKey: "AIzaSyCNXgUYO3ylocvjmnR4V6TvAU04iDUJW0Q",
+            authDomain: "wells-of-salvation.firebaseapp.com",
+            projectId: "wells-of-salvation",
+            storageBucket: "wells-of-salvation.firebasestorage.app",
+            messagingSenderId: "137343442147",
+            appId: "1:137343442147:web:3a3c81a660887954d9f9d6"
         };
 
-        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-        // FirebaseUI config
-        const ui = new firebaseui.auth.AuthUI(firebase.auth());
+        const signInTab = document.getElementById('signInTab');
+        const signUpTab = document.getElementById('signUpTab');
+        const displayNameField = document.getElementById('display-name-field');
+        const authForm = document.getElementById('auth-form');
+        const authSubmit = document.getElementById('auth-submit');
+        const authMessage = document.getElementById('auth-message');
+        const googleButton = document.getElementById('google-signin');
 
-        const uiConfig = {
-            signInSuccessUrl: 'profile.html', // redirect after login
-            signInOptions: [
-                 firebase.auth.GoogleAuthProvider.PROVIDER_ID, //
-                {
-                    provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                    requireDisplayName: true
-                }
-            ],
-            tosUrl: 'index.html',
-            privacyPolicyUrl: 'index.html',
-            callbacks: {
-                uiShown: () => document.getElementById('loader').style.display = 'none'
-            }
-        };
+        let mode = 'signin';
 
-        ui.start('#firebaseui-auth-container', uiConfig);
+        function setMode(newMode) {
+            mode = newMode;
+            const isSignUp = mode === 'signup';
+            signInTab.classList.toggle('active', !isSignUp);
+            signUpTab.classList.toggle('active', isSignUp);
+            displayNameField.classList.toggle('hidden', !isSignUp);
+            authSubmit.textContent = isSignUp ? 'Create Account' : 'Sign In';
+            authMessage.classList.add('hidden');
+        }
 
-        // Update navigation based on auth state
-        firebase.auth().onAuthStateChanged(user => {
-            const navAuth = document.getElementById('nav-auth');
+        function showMessage(text, type = 'error') {
+            authMessage.textContent = text;
+            authMessage.className = `message ${type}`;
+        }
+
+        signInTab.addEventListener('click', () => setMode('signin'));
+        signUpTab.addEventListener('click', () => setMode('signup'));
+
+        auth.onAuthStateChanged((user) => {
             if (user) {
-                navAuth.textContent = 'Profile';
-                navAuth.href = 'profile.html';
+                window.location.href = 'profile.html';
+            }
+        });
+
+        authForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const displayName = document.getElementById('display-name').value.trim();
+
+            if (!email || !password) {
+                showMessage('Please enter both email and password.');
+                return;
+            }
+
+            if (mode === 'signup') {
+                if (!displayName) {
+                    showMessage('Please enter your full name to create an account.');
+                    return;
+                }
+
+                try {
+                    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                    await userCredential.user.updateProfile({ displayName });
+                    window.location.href = 'profile.html';
+                } catch (error) {
+                    showMessage(error.message || 'Unable to create account. Please try again.');
+                }
             } else {
-                navAuth.textContent = 'Sign In';
-                navAuth.href = 'signin.html';
+                try {
+                    await auth.signInWithEmailAndPassword(email, password);
+                    window.location.href = 'profile.html';
+                } catch (error) {
+                    showMessage(error.message || 'Unable to sign in. Please check your credentials.');
+                }
+            }
+        });
+
+        googleButton.addEventListener('click', async () => {
+            try {
+                await auth.signInWithPopup(googleProvider);
+                window.location.href = 'profile.html';
+            } catch (error) {
+                showMessage(error.message || 'Google sign-in failed. Please try again.');
             }
         });
     </script>
