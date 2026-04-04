@@ -227,12 +227,8 @@
         resultsDiv.innerHTML = '<div class="loading">Searching Bible verses...</div>';
 
         try {
-            // Using Bible-API.com to search verses
-            const response = await fetch(`https://api.scripture.api.bible/v1/search?query=${encodeURIComponent(query)}&limit=10`, {
-                headers: {
-                    'api-key': 'e8033ba27b1c1b1d6c7f8a9b0c1d2e3f'
-                }
-            });
+            // Using Bible-API.com (free API with no authentication required)
+            const response = await fetch(`https://bible-api.com/?search=${encodeURIComponent(query)}`);
 
             if (!response.ok) {
                 throw new Error('Search API error');
@@ -240,22 +236,22 @@
 
             const data = await response.json();
             
-            if (!data.results || data.results.length === 0) {
+            if (!data.verses || data.verses.length === 0) {
                 resultsDiv.innerHTML = `<p style="text-align: center; color: #666;">No verses found for "${query}". Try another search term.</p>`;
                 return;
             }
 
             let resultsHTML = '';
-            data.results.forEach(result => {
+            data.verses.forEach(verse => {
                 resultsHTML += `
                     <div class="search-result">
-                        <strong>${result.reference}</strong>
-                        <p>${result.preview || 'Verse content available in Bible Reader'}</p>
+                        <strong>${verse.book_name} ${verse.chapter}:${verse.verse}</strong>
+                        <p>"${verse.text}"</p>
                     </div>
                 `;
             });
 
-            resultsDiv.innerHTML = resultsHTML;
+            resultsDiv.innerHTML = resultsHTML || `<p style="text-align: center; color: #666;">No verses found for "${query}". Try another search term.</p>`;
         } catch (error) {
             console.error('Search error:', error);
             resultsDiv.innerHTML = `
