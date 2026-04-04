@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wells of Salvation</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-card a:hover {
+            background: #34495e !important;
+        }
+        #new-verse:hover {
+            background: #34495e !important;
+        }
+        #cta a:hover {
+            background: #34495e !important;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -23,41 +37,105 @@
     </header>
 
     <main>
-        <section id="welcome">
-            <h2>Welcome!</h2>
-            <p>This platform is designed to help you grow in your faith, find sound doctrine, and draw closer to God. Explore the resources below.</p>
+        <!-- Hero Section -->
+        <section id="hero" style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; margin-bottom: 40px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">⛲ Wells of Salvation</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 20px; font-style: italic;">"With joy you will draw water from the wells of salvation." – Isaiah 12:3</p>
+            <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                A comprehensive platform for Christian growth, featuring Bible study, worship music, spiritual guidance, and multimedia resources to deepen your faith journey.
+            </p>
         </section>
 
-        <section id="bible">
-            <h2>📖 Bible Verse of the Day</h2>
-            <blockquote>
-                <p id="verse-content">Loading verse...</p>
-                <cite id="verse-reference"></cite>
+        <!-- Features Grid -->
+        <section id="features" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px; font-size: 2rem;">Explore Our Resources</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+                <!-- Bible Study -->
+                <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">📖</div>
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Bible Study</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                        Access our interactive Bible reader and daily verses to deepen your understanding of God's Word.
+                    </p>
+                    <a href="bible.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Read the Bible</a>
+                </div>
+
+                <!-- Study Guides -->
+                <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">📚</div>
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Study Guides</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                        Comprehensive biblical studies on faith, grace, prayer, and spiritual growth topics.
+                    </p>
+                    <a href="study-guides.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Start Studying</a>
+                </div>
+
+                <!-- Worship Music -->
+                <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">🎵</div>
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Worship Music</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                        Discover Christian artists and songs to enrich your worship and praise experience.
+                    </p>
+                    <a href="music.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Listen Now</a>
+                </div>
+
+                <!-- Christian Movies -->
+                <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">🎥</div>
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Christian Movies</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                        Inspiring films and documentaries that strengthen faith and provide spiritual insights.
+                    </p>
+                    <a href="movies.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Watch Movies</a>
+                </div>
+
+                <!-- Blog & Articles -->
+                <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">📝</div>
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Blog & Articles</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                        Thought-provoking articles, devotionals, and insights for spiritual growth and encouragement.
+                    </p>
+                    <a href="blog/index.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Read Articles</a>
+                </div>
+
+                <!-- French Content -->
+                <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">🇫🇷</div>
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Contenu Français</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                        Toutes nos ressources disponibles en français pour notre communauté francophone.
+                    </p>
+                    <a href="fr.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Voir en Français</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bible Verse Section -->
+        <section id="bible" style="max-width: 800px; margin: 0 auto; padding: 30px 20px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 40px;">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 20px;">📖 Daily Bible Verse</h2>
+            <blockquote style="text-align: center; font-size: 1.2rem; line-height: 1.6; margin-bottom: 20px;">
+                <p id="verse-content" style="font-style: italic; color: #333;">Loading verse...</p>
+                <cite id="verse-reference" style="color: #666; font-size: 0.9rem;"></cite>
             </blockquote>
-            <!-- Button to fetch a new random verse -->
-            <button id="new-verse" style="margin-top: 10px; padding: 8px 16px; background-color: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                🔄 New Verse
-            </button>
+            <div style="text-align: center;">
+                <button id="new-verse" style="background: #2c3e50; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background 0.3s ease;">
+                    🔄 Get New Verse
+                </button>
+            </div>
         </section>
 
-        <section id="audio">
-            <h2>🎧 Audio Messages</h2>
-            <ul>
-                <li>
-                    <strong>The Power of Prayer</strong><br>
-                    <audio controls src="audio/message1.mp3"></audio>
-                </li>
-                <li>
-                    <strong>Walking in Faith</strong><br>
-                    <audio controls src="audio/worship1.mp3"></audio>
-                </li>
-            </ul>
-            <p><em>More messages coming soon...</em></p>
-        </section>
-
-        <section id="study">
-            <h2>📚 Study Guides</h2>
-            <p>Our first study guide: <a href="#">"Overcoming Sin Through Grace"</a> (coming soon)</p>
+        <!-- Call to Action -->
+        <section id="cta" style="text-align: center; padding: 40px 20px; background: #ecf0f1;">
+            <h2 style="color: #2c3e50; margin-bottom: 15px;">Join Our Community</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Create an account to access personalized features, save your favorite verses, and connect with fellow believers on your faith journey.
+            </p>
+            <a href="sign-in.html" style="display: inline-block; background: #2c3e50; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: background 0.3s ease;">
+                Get Started Today
+            </a>
         </section>
     </main>
 
