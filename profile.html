@@ -23,21 +23,53 @@
     </header>
 
     <main>
-        <section style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        <section style="max-width: 900px; margin: 0 auto; padding: 20px;">
             <h2>My Profile</h2>
-            <div id="user-info" style="background: #ecf0f1; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                Loading...
+
+            <div id="user-info" style="background: #ecf0f1; padding: 24px; border-radius: 12px; margin-bottom: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                <h3 style="margin-top: 0; color: #2c3e50;">Account Information</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+                    <div><strong>Name:</strong> <span id="user-name">Loading...</span></div>
+                    <div><strong>Email:</strong> <span id="user-email">Loading...</span></div>
+                    <div><strong>User ID:</strong> <span id="user-id">Loading...</span></div>
+                    <div><strong>Password:</strong> <span id="user-password">********</span> <small style="color: #666; display:block;">Securely hidden</small></div>
+                </div>
+                <div style="margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button id="reset-password" style="padding: 10px 18px; background: #2c3e50; color: white; border: none; border-radius: 6px; cursor: pointer;">Reset Password</button>
+                    <button id="sign-out" style="padding: 10px 18px; background: #c0392b; color: white; border: none; border-radius: 6px; cursor: pointer;">Sign Out</button>
+                </div>
             </div>
 
-            <h3>📖 Saved Verses</h3>
-            <div id="saved-verses" style="margin: 20px 0;">
-                <ul id="verses-list"></ul>
-                <input type="text" id="new-verse" placeholder="Enter a verse (e.g., John 3:16)" style="width: 70%; padding: 10px; margin-right: 10px;">
-                <button id="save-verse" style="padding: 10px 20px; background-color: #2c3e50; color: white; border: none; border-radius: 4px;">Save Verse</button>
-            </div>
+            <section id="saved-materials" style="display: grid; gap: 24px;">
+                <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                    <h3 style="color: #2c3e50;">📖 Saved Bible Verses</h3>
+                    <ul id="verses-list" style="margin-top: 12px; padding-left: 18px; color: #333;"></ul>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px;">
+                        <input id="new-verse" type="text" placeholder="Enter a verse (e.g. John 3:16)" style="flex: 1; min-width: 220px; padding: 10px; border: 1px solid #ccc; border-radius: 6px;">
+                        <button id="save-verse" style="padding: 11px 20px; background: #2c3e50; color: white; border: none; border-radius: 6px; cursor: pointer;">Save Verse</button>
+                    </div>
+                </div>
 
-            <button id="sign-out" style="padding: 10px 20px; background-color: #c0392b; color: white; border: none; border-radius: 4px;">Sign Out</button>
-            <p><a href="index.html">← Back to Home</a></p>
+                <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                    <h3 style="color: #2c3e50;">🎵 Favorite Music</h3>
+                    <ul id="music-list" style="margin-top: 12px; padding-left: 18px; color: #333;"></ul>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px;">
+                        <input id="new-music" type="text" placeholder="Enter artist or song name" style="flex: 1; min-width: 220px; padding: 10px; border: 1px solid #ccc; border-radius: 6px;">
+                        <button id="save-music" style="padding: 11px 20px; background: #2c3e50; color: white; border: none; border-radius: 6px; cursor: pointer;">Save Music</button>
+                    </div>
+                </div>
+
+                <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                    <h3 style="color: #2c3e50;">📝 Personal Notes</h3>
+                    <ul id="notes-list" style="margin-top: 12px; padding-left: 18px; color: #333;"></ul>
+                    <div style="margin-top: 14px; display: grid; gap: 10px;">
+                        <textarea id="new-note" rows="3" placeholder="Write a prayer request, insight, or note" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px;"></textarea>
+                        <button id="save-note" style="padding: 11px 20px; background: #2c3e50; color: white; border: none; border-radius: 6px; cursor: pointer; width: fit-content;">Save Note</button>
+                    </div>
+                </div>
+            </section>
+
+            <p style="margin-top: 24px;"><a href="index.html">← Back to Home</a></p>
         </section>
     </main>
 
@@ -64,69 +96,110 @@
         const db = firebase.firestore();
         const auth = firebase.auth();
 
-        const userInfoDiv = document.getElementById('user-info');
+        const userName = document.getElementById('user-name');
+        const userEmail = document.getElementById('user-email');
+        const userId = document.getElementById('user-id');
+        const userPassword = document.getElementById('user-password');
         const versesList = document.getElementById('verses-list');
         const newVerseInput = document.getElementById('new-verse');
         const saveVerseBtn = document.getElementById('save-verse');
+        const musicList = document.getElementById('music-list');
+        const newMusicInput = document.getElementById('new-music');
+        const saveMusicBtn = document.getElementById('save-music');
+        const notesList = document.getElementById('notes-list');
+        const newNoteTextarea = document.getElementById('new-note');
+        const saveNoteBtn = document.getElementById('save-note');
+        const resetPasswordBtn = document.getElementById('reset-password');
         const signOutBtn = document.getElementById('sign-out');
         const navAuth = document.getElementById('nav-auth');
 
-        // Load user data when signed in
+        function renderList(container, items, emptyText) {
+            container.innerHTML = '';
+            if (!items.length) {
+                const li = document.createElement('li');
+                li.textContent = emptyText;
+                li.style.color = '#666';
+                container.appendChild(li);
+                return;
+            }
+            items.forEach(value => {
+                const li = document.createElement('li');
+                li.textContent = value;
+                container.appendChild(li);
+            });
+        }
+
+        async function updateUserDoc(userId, field, newValue) {
+            const docRef = db.collection('users').doc(userId);
+            const docSnap = await docRef.get();
+            const currentData = docSnap.exists ? docSnap.data() : {};
+            const currentValues = currentData[field] || [];
+            const updatedValues = [...currentValues, newValue];
+            await docRef.set({ [field]: updatedValues }, { merge: true });
+            return updatedValues;
+        }
+
         auth.onAuthStateChanged(async user => {
             if (user) {
-                // Display user info
-                userInfoDiv.innerHTML = `
-                    <p><strong>Name:</strong> ${user.displayName || 'Not provided'}</p>
-                    <p><strong>Email:</strong> ${user.email}</p>
-                    <p><strong>User ID:</strong> ${user.uid}</p>
-                `;
+                userName.textContent = user.displayName || 'Not provided';
+                userEmail.textContent = user.email || 'Not available';
+                userId.textContent = user.uid;
+                userPassword.textContent = '********';
                 navAuth.textContent = 'Profile';
                 navAuth.href = 'profile.html';
 
-                // Load saved verses from Firestore
                 const docRef = db.collection('users').doc(user.uid);
                 const docSnap = await docRef.get();
-                
-                if (docSnap.exists) {
-                    const verses = docSnap.data().verses || [];
-                    versesList.innerHTML = '';
-                    verses.forEach(verse => {
-                        const li = document.createElement('li');
-                        li.textContent = verse;
-                        versesList.appendChild(li);
-                    });
-                } else {
-                    // First time user – create an empty document
-                    await docRef.set({ verses: [] });
-                }
+                const data = docSnap.exists ? docSnap.data() : {};
+                const verses = data.verses || [];
+                const music = data.music || [];
+                const notes = data.notes || [];
 
-                // Save new verse
+                renderList(versesList, verses, 'No saved verses yet.');
+                renderList(musicList, music, 'No favorite music saved yet.');
+                renderList(notesList, notes, 'No notes saved yet.');
+
                 saveVerseBtn.onclick = async () => {
-                    const newVerse = newVerseInput.value.trim();
-                    if (newVerse) {
-                        const docRef = db.collection('users').doc(user.uid);
-                        const docSnap = await docRef.get();
-                        const currentVerses = docSnap.exists ? docSnap.data().verses : [];
-                        const updatedVerses = [...currentVerses, newVerse];
-                        await docRef.set({ verses: updatedVerses });
-                        
-                        // Refresh the list
-                        versesList.innerHTML = '';
-                        updatedVerses.forEach(verse => {
-                            const li = document.createElement('li');
-                            li.textContent = verse;
-                            versesList.appendChild(li);
-                        });
-                        newVerseInput.value = '';
+                    const value = newVerseInput.value.trim();
+                    if (!value) return;
+                    const updated = await updateUserDoc(user.uid, 'verses', value);
+                    renderList(versesList, updated, 'No saved verses yet.');
+                    newVerseInput.value = '';
+                };
+
+                saveMusicBtn.onclick = async () => {
+                    const value = newMusicInput.value.trim();
+                    if (!value) return;
+                    const updated = await updateUserDoc(user.uid, 'music', value);
+                    renderList(musicList, updated, 'No favorite music saved yet.');
+                    newMusicInput.value = '';
+                };
+
+                saveNoteBtn.onclick = async () => {
+                    const value = newNoteTextarea.value.trim();
+                    if (!value) return;
+                    const updated = await updateUserDoc(user.uid, 'notes', value);
+                    renderList(notesList, updated, 'No notes saved yet.');
+                    newNoteTextarea.value = '';
+                };
+
+                resetPasswordBtn.onclick = async () => {
+                    try {
+                        await auth.sendPasswordResetEmail(user.email);
+                        alert('Password reset email sent to ' + user.email);
+                    } catch (error) {
+                        alert(error.message || 'Unable to send password reset email.');
                     }
                 };
+
+                if (!docSnap.exists) {
+                    await docRef.set({ verses: [], music: [], notes: [] }, { merge: true });
+                }
             } else {
-                // Not logged in – redirect to signin
-                window.location.href = 'signin.html';
+                window.location.href = 'sign-in.html';
             }
         });
 
-        // Sign out
         signOutBtn.onclick = () => {
             auth.signOut().then(() => {
                 window.location.href = 'index.html';
