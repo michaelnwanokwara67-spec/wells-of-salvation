@@ -47,6 +47,7 @@
             border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 1rem;
+            box-sizing: border-box;
         }
         .primary-btn,
         .secondary-btn {
@@ -90,6 +91,30 @@
             background: #e6f4ea;
             color: #1f5d2e;
             border: 1px solid #c6e1cd;
+        }
+
+        @media (max-width: 640px) {
+            #auth-container {
+                max-width: 100%;
+                margin: 0 10px;
+                padding: 16px;
+            }
+
+            .auth-toggle button {
+                padding: 0.7rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .form-group input {
+                padding: 0.8rem;
+                font-size: 16px;
+            }
+
+            .primary-btn,
+            .secondary-btn {
+                padding: 0.85rem 0.8rem;
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
