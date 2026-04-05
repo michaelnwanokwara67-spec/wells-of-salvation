@@ -18,110 +18,147 @@
         #cta a:hover {
             background: #34495e !important;
         }
+        .language-selector-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+        }
+        .language-selector-container select {
+            padding: 8px 12px;
+            border: 1px solid #34495e;
+            border-radius: 4px;
+            background-color: white;
+            color: #2c3e50;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .language-selector-container select:hover {
+            border-color: #2c3e50;
+            background-color: #ecf0f1;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>⛲ Wells of Salvation</h1>
-        <p><em>"With joy you will draw water from the wells of salvation." – Isaiah 12:3</em></p>
+        <h1>⛲ <span data-i18n="header.title">Wells of Salvation</span></h1>
+        <p><em>"<span data-i18n="header.quote">With joy you will draw water from the wells of salvation.</span>" – <span data-i18n="header.quoteSource">Isaiah 12:3</span></em></p>
         <nav>
-    <a href="index.html">Home</a> |
-    <a href="bible.html">Bible</a> |
-    <a href="study-guides.html">Study Guides</a> |
-    <a href="music.html">Music</a> |
-    <a href="blog/index.html">Blog</a> |
-    <a href="movies.html">Movies</a> |
-    <a href="fr.html">Français</a> |
-    <a href="sign-in.html" id="nav-auth">Sign In</a>
+    <a href="index.html" data-i18n="nav.home">Home</a> |
+    <a href="bible.html" data-i18n="nav.bible">Bible</a> |
+    <a href="study-guides.html" data-i18n="nav.studyGuides">Study Guides</a> |
+    <a href="music.html" data-i18n="nav.music">Music</a> |
+    <a href="blog/index.html" data-i18n="nav.blog">Blog</a> |
+    <a href="movies.html" data-i18n="nav.movies">Movies</a> |
+    <a href="sign-in.html" id="nav-auth" data-i18n="nav.signIn">Sign In</a>
+    <div class="language-selector-container">
+        <select id="language-select" data-i18n-aria="language.selectLanguage">
+            <option value="en" data-i18n="language.english">English</option>
+            <option value="fr" data-i18n="language.french">Français</option>
+            <option value="es" data-i18n="language.spanish">Español</option>
+            <option value="de" data-i18n="language.german">Deutsch</option>
+            <option value="pt" data-i18n="language.portuguese">Português</option>
+            <option value="it" data-i18n="language.italian">Italiano</option>
+            <option value="ja" data-i18n="language.japanese">日本語</option>
+            <option value="zh" data-i18n="language.chinese">中文</option>
+            <option value="ar" data-i18n="language.arabic">العربية</option>
+        </select>
+    </div>
 </nav>
     </header>
 
     <main>
         <!-- Hero Section -->
         <section id="hero" style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; margin-bottom: 40px;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 10px; color: white;">⛲ Wells of Salvation</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 20px; font-style: italic;">"With joy you will draw water from the wells of salvation." – Isaiah 12:3</p>
-            <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px; color: white;">⛲ <span data-i18n="hero.title">Wells of Salvation</span></h2>
+            <p style="font-size: 1.2rem; margin-bottom: 20px; font-style: italic;">"<span data-i18n="hero.quote">With joy you will draw water from the wells of salvation.</span>" – <span data-i18n="hero.quoteSource">Isaiah 12:3</span></p>
+            <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6;" data-i18n="hero.description">
                 A comprehensive platform for Christian growth, featuring Bible study, worship music, spiritual guidance, and multimedia resources to deepen your faith journey.
             </p>
         </section>
 
         <!-- Features Grid -->
         <section id="features" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px; font-size: 2rem;">Explore Our Resources</h2>
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px; font-size: 2rem;" data-i18n="features.title">Explore Our Resources</h2>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
                 <!-- Bible Study -->
                 <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
                     <div style="font-size: 3rem; margin-bottom: 15px;">📖</div>
-                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Bible Study</h3>
-                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;" data-i18n="features.bibleStudy.title">Bible Study</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;" data-i18n="features.bibleStudy.description">
                         Access our interactive Bible reader and daily verses to deepen your understanding of God's Word.
                     </p>
-                    <a href="bible.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Read the Bible</a>
+                    <a href="bible.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;" data-i18n="features.bibleStudy.button">Read the Bible</a>
                 </div>
 
                 <!-- Study Guides -->
                 <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
                     <div style="font-size: 3rem; margin-bottom: 15px;">📚</div>
-                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Study Guides</h3>
-                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;" data-i18n="features.studyGuides.title">Study Guides</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;" data-i18n="features.studyGuides.description">
                         Comprehensive biblical studies on faith, grace, prayer, and spiritual growth topics.
                     </p>
-                    <a href="study-guides.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Start Studying</a>
+                    <a href="study-guides.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;" data-i18n="features.studyGuides.button">Start Studying</a>
                 </div>
 
                 <!-- Worship Music -->
                 <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
                     <div style="font-size: 3rem; margin-bottom: 15px;">🎵</div>
-                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Worship Music</h3>
-                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;" data-i18n="features.worshipMusic.title">Worship Music</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;" data-i18n="features.worshipMusic.description">
                         Discover Christian artists and songs to enrich your worship and praise experience.
                     </p>
-                    <a href="music.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Listen Now</a>
+                    <a href="music.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;" data-i18n="features.worshipMusic.button">Listen Now</a>
                 </div>
 
                 <!-- Christian Movies -->
                 <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
                     <div style="font-size: 3rem; margin-bottom: 15px;">🎥</div>
-                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Christian Movies</h3>
-                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;" data-i18n="features.christianMovies.title">Christian Movies</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;" data-i18n="features.christianMovies.description">
                         Inspiring films and documentaries that strengthen faith and provide spiritual insights.
                     </p>
-                    <a href="movies.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Watch Movies</a>
+                    <a href="movies.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;" data-i18n="features.christianMovies.button">Watch Movies</a>
                 </div>
 
                 <!-- Blog & Articles -->
                 <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
                     <div style="font-size: 3rem; margin-bottom: 15px;">📝</div>
-                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Blog & Articles</h3>
-                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;" data-i18n="features.blogArticles.title">Blog & Articles</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;" data-i18n="features.blogArticles.description">
                         Thought-provoking articles, devotionals, and insights for spiritual growth and encouragement.
                     </p>
-                    <a href="blog/index.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Read Articles</a>
+                    <a href="blog/index.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;" data-i18n="features.blogArticles.button">Read Articles</a>
                 </div>
 
                 <!-- French Content -->
                 <div class="feature-card" style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease;">
                     <div style="font-size: 3rem; margin-bottom: 15px;">🇫🇷</div>
-                    <h3 style="color: #2c3e50; margin-bottom: 10px;">Contenu Français</h3>
-                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 10px;" data-i18n="features.frenchContent.title">Contenu Français</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;" data-i18n="features.frenchContent.description">
                         Toutes nos ressources disponibles en français pour notre communauté francophone.
                     </p>
-                    <a href="fr.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;">Voir en Français</a>
+                    <a href="fr.html" style="display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s ease;" data-i18n="features.frenchContent.button">Voir en Français</a>
                 </div>
             </div>
         </section>
 
         <!-- Bible Verse Section -->
         <section id="bible" style="max-width: 800px; margin: 0 auto; padding: 30px 20px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 40px;">
-            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 20px;">📖 Daily Bible Verse</h2>
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 20px;" data-i18n="bible.title">📖 Daily Bible Verse</h2>
             <blockquote style="text-align: center; font-size: 1.2rem; line-height: 1.6; margin-bottom: 20px;">
-                <p id="verse-content" style="font-style: italic; color: #333;">Loading verse...</p>
+                <p id="verse-content" style="font-style: italic; color: #333;" data-i18n="bible.loadingVerse">Loading verse...</p>
                 <cite id="verse-reference" style="color: #666; font-size: 0.9rem;"></cite>
             </blockquote>
             <div style="text-align: center;">
-                <button id="new-verse" style="background: #2c3e50; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background 0.3s ease;">
+                <button id="new-verse" style="background: #2c3e50; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background 0.3s ease;" data-i18n="bible.getNewVerse">
                     🔄 Get New Verse
                 </button>
             </div>
@@ -129,18 +166,18 @@
 
         <!-- Call to Action -->
         <section id="cta" style="text-align: center; padding: 40px 20px; background: #ecf0f1;">
-            <h2 style="color: #2c3e50; margin-bottom: 15px;">Join Our Community</h2>
-            <p style="font-size: 1.1rem; color: #666; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <h2 style="color: #2c3e50; margin-bottom: 15px;" data-i18n="cta.title">Join Our Community</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto;" data-i18n="cta.description">
                 Create an account to access personalized features, save your favorite verses, and connect with fellow believers on your faith journey.
             </p>
-            <a href="sign-in.html" style="display: inline-block; background: #2c3e50; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: background 0.3s ease;">
+            <a href="sign-in.html" style="display: inline-block; background: #2c3e50; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: background 0.3s ease;" data-i18n="cta.button">
                 Get Started Today
             </a>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Wells of Salvation. All rights reserved.</p>
+        <p data-i18n="footer.copyright">&copy; 2026 Wells of Salvation. All rights reserved.</p>
     </footer>
 
     <script>
@@ -151,7 +188,7 @@
 
             try {
                 // Show loading state
-                verseContent.textContent = 'Loading verse...';
+                verseContent.textContent = i18next.t('bible.loadingVerse');
                 verseReference.textContent = '';
 
                 const response = await fetch('https://beta.ourmanna.com/api/v1/get?format=json&order=random');
@@ -183,6 +220,11 @@
         // Add event listener for the "New Verse" button
         document.getElementById('new-verse')?.addEventListener('click', fetchRandomVerse);
     </script>
+    <!-- i18next CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/i18next@23.7.6/dist/umd/i18next.min.js"></script>
+    <!-- Translation files -->
+    <script src="translations.js"></script>
+    <script src="i18n-init.js"></script>
     <!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>

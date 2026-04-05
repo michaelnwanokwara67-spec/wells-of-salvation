@@ -144,14 +144,26 @@
         <h1>⛲ Wells of Salvation</h1>
         <p><em>"With joy you will draw water from the wells of salvation." – Isaiah 12:3</em></p>
         <nav>
-            <a href="index.html">Home</a> |
-            <a href="bible.html">Bible</a> |
-            <a href="study-guides.html">Study Guides</a> |
-            <a href="music.html">Music</a> |
-            <a href="blog/index.html">Blog</a> |
-            <a href="movies.html">Movies</a> |
-            <a href="fr.html">Français</a> |
-            <a href="sign-in.html" id="nav-auth">Sign In</a>
+            <a href="index.html" data-i18n="nav.home">Home</a> |
+            <a href="bible.html" data-i18n="nav.bible">Bible</a> |
+            <a href="study-guides.html" data-i18n="nav.studyGuides">Study Guides</a> |
+            <a href="music.html" data-i18n="nav.music">Music</a> |
+            <a href="blog/index.html" data-i18n="nav.blog">Blog</a> |
+            <a href="movies.html" data-i18n="nav.movies">Movies</a> |
+            <a href="sign-in.html" id="nav-auth" data-i18n="nav.signIn">Sign In</a>
+            <div class="language-selector-container">
+                <select id="language-select" data-i18n-aria="language.selectLanguage">
+                    <option value="en" data-i18n="language.english">English</option>
+                    <option value="fr" data-i18n="language.french">Français</option>
+                    <option value="es" data-i18n="language.spanish">Español</option>
+                    <option value="de" data-i18n="language.german">Deutsch</option>
+                    <option value="pt" data-i18n="language.portuguese">Português</option>
+                    <option value="it" data-i18n="language.italian">Italiano</option>
+                    <option value="ja" data-i18n="language.japanese">日本語</option>
+                    <option value="zh" data-i18n="language.chinese">中文</option>
+                    <option value="ar" data-i18n="language.arabic">العربية</option>
+                </select>
+            </div>
         </nav>
     </header>
 
@@ -290,5 +302,8 @@
             }
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next@23.7.6/dist/umd/i18next.min.js"></script>
+    <script src="translations.js"></script>
+    <script src="i18n-init.js"></script>
 </body>
 </html>
