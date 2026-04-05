@@ -8,6 +8,7 @@ const translations = {
                 bible: "Bible",
                 studyGuides: "Study Guides",
                 music: "Music",
+                books: "Books",
                 blog: "Blog",
                 movies: "Movies",
                 signIn: "Sign In",
@@ -44,6 +45,11 @@ const translations = {
                     title: "Worship Music",
                     description: "Discover Christian artists and songs to enrich your worship and praise experience.",
                     button: "Listen Now"
+                },
+                books: {
+                    title: "Christian Books",
+                    description: "Browse curated Christian books in PDF format with cover art, summaries and download links.",
+                    button: "Browse Books"
                 },
                 christianMovies: {
                     title: "Christian Movies",
@@ -110,6 +116,7 @@ const translations = {
                 bible: "Bible",
                 studyGuides: "Guides d'étude",
                 music: "Musique",
+                books: "Livres",
                 blog: "Blogue",
                 movies: "Films",
                 signIn: "Se connecter",
@@ -146,6 +153,11 @@ const translations = {
                     title: "Musique de Culte",
                     description: "Découvrez les artistes chrétiens et les chansons pour enrichir votre expérience d'adoration et de louange.",
                     button: "Écouter maintenant"
+                },
+                books: {
+                    title: "Livres Chrétiens",
+                    description: "Parcourez des livres chrétiens en format PDF avec couvertures, résumés et liens de téléchargement.",
+                    button: "Voir les livres"
                 },
                 christianMovies: {
                     title: "Films Chrétiens",
@@ -212,6 +224,7 @@ const translations = {
                 bible: "Biblia",
                 studyGuides: "Guías de Estudio",
                 music: "Música",
+                books: "Libros",
                 blog: "Blog",
                 movies: "Películas",
                 signIn: "Iniciar Sesión",
@@ -248,6 +261,11 @@ const translations = {
                     title: "Música de Adoración",
                     description: "Descubre artistas cristianos y canciones para enriquecer tu experiencia de adoración y alabanza.",
                     button: "Escuchar Ahora"
+                },
+                books: {
+                    title: "Libros Cristianos",
+                    description: "Explora libros cristianos en formato PDF con portadas, resúmenes y enlaces de descarga.",
+                    button: "Ver Libros"
                 },
                 christianMovies: {
                     title: "Películas Cristianas",
@@ -314,6 +332,7 @@ const translations = {
                 bible: "Bibel",
                 studyGuides: "Studienanleitungen",
                 music: "Musik",
+                books: "Bücher",
                 blog: "Blog",
                 movies: "Filme",
                 signIn: "Anmelden",
@@ -350,6 +369,11 @@ const translations = {
                     title: "Anbetungsmusik",
                     description: "Entdecken Sie christliche Künstler und Songs, um Ihre Anbetungs- und Loberfahrung zu bereichern.",
                     button: "Jetzt Anhören"
+                },
+                books: {
+                    title: "Christliche Bücher",
+                    description: "Durchstöbern Sie christliche Bücher im PDF-Format mit Coverbildern, Zusammenfassungen und Downloadlinks.",
+                    button: "Bücher ansehen"
                 },
                 christianMovies: {
                     title: "Christliche Filme",
@@ -416,6 +440,7 @@ const translations = {
                 bible: "Bíblia",
                 studyGuides: "Guias de Estudo",
                 music: "Música",
+                books: "Livros",
                 blog: "Blogue",
                 movies: "Filmes",
                 signIn: "Entrar",
@@ -452,6 +477,11 @@ const translations = {
                     title: "Música de Adoração",
                     description: "Descubra artistas cristãos e músicas para enriquecer sua experiência de adoração e louvor.",
                     button: "Ouvir Agora"
+                },
+                books: {
+                    title: "Livros Cristãos",
+                    description: "Navegue por livros cristãos em formato PDF com capas, resumos e links de download.",
+                    button: "Ver Livros"
                 },
                 christianMovies: {
                     title: "Filmes Cristãos",
@@ -518,6 +548,7 @@ const translations = {
                 bible: "Bibbia",
                 studyGuides: "Guide di Studio",
                 music: "Musica",
+                books: "Libri",
                 blog: "Blog",
                 movies: "Film",
                 signIn: "Accedi",
@@ -554,6 +585,11 @@ const translations = {
                     title: "Musica di Adorazione",
                     description: "Scopri artisti cristiani e canzoni per arricchire la tua esperienza di adorazione e lode.",
                     button: "Ascolta Ora"
+                },
+                books: {
+                    title: "Libri Cristiani",
+                    description: "Sfoglia libri cristiani in formato PDF con copertine, riassunti e link per il download.",
+                    button: "Vedi Libri"
                 },
                 christianMovies: {
                     title: "Film Cristiani",
@@ -620,6 +656,7 @@ const translations = {
                 bible: "聖書",
                 studyGuides: "学習ガイド",
                 music: "音楽",
+                books: "書籍",
                 blog: "ブログ",
                 movies: "映画",
                 signIn: "サインイン",
@@ -656,6 +693,11 @@ const translations = {
                     title: "礼拝音楽",
                     description: "クリスチャンアーティストと曲を発見して、礼拝と賛美の体験を豊かにしましょう。",
                     button: "今すぐ聴く"
+                },
+                books: {
+                    title: "クリスチャン書籍",
+                    description: "カバー写真付きの PDF 形式のクリスチャン書籍を閲覧し、要約とダウンロードリンクを確認できます。",
+                    button: "書籍を見る"
                 },
                 christianMovies: {
                     title: "クリスチャン映画",
@@ -722,6 +764,7 @@ const translations = {
                 bible: "圣经",
                 studyGuides: "学习指南",
                 music: "音乐",
+                books: "书籍",
                 blog: "博客",
                 movies: "电影",
                 signIn: "登录",
@@ -758,6 +801,11 @@ const translations = {
                     title: "敬拜音乐",
                     description: "发现基督教艺术家和歌曲，丰富您的敬拜和赞美体验。",
                     button: "立即收听"
+                },
+                books: {
+                    title: "基督教书籍",
+                    description: "浏览精选的基督教 PDF 书籍，含封面、摘要和下载链接。",
+                    button: "查看书籍"
                 },
                 christianMovies: {
                     title: "基督教电影",
@@ -824,6 +872,7 @@ const translations = {
                 bible: "الكتاب المقدس",
                 studyGuides: "دليل الدراسة",
                 music: "الموسيقى",
+                books: "الكتب",
                 blog: "المدونة",
                 movies: "الأفلام",
                 signIn: "تسجيل الدخول",
@@ -860,6 +909,11 @@ const translations = {
                     title: "موسيقى العبادة",
                     description: "اكتشف الفنانين المسيحيين والأغاني لإثراء تجربة العبادة والتسبيح.",
                     button: "استمع الآن"
+                },
+                books: {
+                    title: "الكتب المسيحية",
+                    description: "تصفح كتبًا مسيحية بصيغة PDF مع أغلفة وملخصات وروابط تنزيل.",
+                    button: "عرض الكتب"
                 },
                 christianMovies: {
                     title: "الأفلام المسيحية",

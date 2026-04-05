@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books - Wells of Salvation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .books-hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .books-hero h2 {
+            color: white;
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        .books-hero p {
+            color: #ecf0f1;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 44px rgba(0, 0, 0, 0.12);
+        }
+
+        .book-cover {
+            height: 0;
+            padding-bottom: 140%;
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .book-cover::before {
+            content: "Book Cover";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 700;
+            opacity: 0.85;
+        }
+
+        .book-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1 1 auto;
+        }
+
+        .book-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .book-author {
+            font-size: 0.95rem;
+            color: #627d98;
+            margin: 0;
+        }
+
+        .book-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin: 0;
+            flex: 1 1 auto;
+        }
+
+        .book-link {
+            display: inline-block;
+            background: #2c3e50;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .book-link:hover {
+            background: #243647;
+        }
+
+        @media (max-width: 768px) {
+            .books-hero {
+                padding: 32px 16px;
+            }
+
+            .book-content {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+                padding: 0 12px 30px;
+            }
+
+            .book-cover {
+                padding-bottom: 160%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>⛲ <span data-i18n="header.title">Wells of Salvation</span></h1>
+        <p><em>"<span data-i18n="header.quote">With joy you will draw water from the wells of salvation.</span>" – <span data-i18n="header.quoteSource">Isaiah 12:3</span></em></p>
+        <nav>
+            <a href="index.html" data-i18n="nav.home">Home</a> |
+            <a href="bible.html" data-i18n="nav.bible">Bible</a> |
+            <a href="study-guides.html" data-i18n="nav.studyGuides">Study Guides</a> |
+            <a href="music.html" data-i18n="nav.music">Music</a> |
+            <a href="books.html" data-i18n="nav.books">Books</a> |
+            <a href="blog/index.html" data-i18n="nav.blog">Blog</a> |
+            <a href="movies.html" data-i18n="nav.movies">Movies</a> |
+            <a href="sign-in.html" id="nav-auth" data-i18n="nav.signIn">Sign In</a>
+            <div class="language-selector-container">
+                <select id="language-select" data-i18n-aria="language.selectLanguage">
+                    <option value="en" data-i18n="language.english">English</option>
+                    <option value="fr" data-i18n="language.french">Français</option>
+                    <option value="es" data-i18n="language.spanish">Español</option>
+                    <option value="de" data-i18n="language.german">Deutsch</option>
+                    <option value="pt" data-i18n="language.portuguese">Português</option>
+                    <option value="it" data-i18n="language.italian">Italiano</option>
+                    <option value="ja" data-i18n="language.japanese">日本語</option>
+                    <option value="zh" data-i18n="language.chinese">中文</option>
+                    <option value="ar" data-i18n="language.arabic">العربية</option>
+                </select>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="books-hero">
+            <h2 data-i18n="features.books.title">Christian Books</h2>
+            <p style="max-width: 720px; margin: 16px auto 0; font-size: 1.05rem; line-height: 1.7; color: #ecf0f1;" data-i18n="features.books.description">
+                Browse curated Christian books in PDF format with cover art, summaries, and download links.
+            </p>
+        </section>
+
+        <section class="books-grid">
+            <article class="book-card">
+                <div class="book-cover"></div>
+                <div class="book-content">
+                    <h3 class="book-title">Knowing God</h3>
+                    <p class="book-author">J.I. Packer</p>
+                    <p class="book-description">A classic exploration of the character of God with spiritual insight to deepen your faith life.</p>
+                    <a href="#" class="book-link">View PDF</a>
+                </div>
+            </article>
+
+            <article class="book-card">
+                <div class="book-cover"></div>
+                <div class="book-content">
+                    <h3 class="book-title">The Purpose Driven Life</h3>
+                    <p class="book-author">Rick Warren</p>
+                    <p class="book-description">A practical guide for discovering purpose, prayer, and spiritual discipline in everyday life.</p>
+                    <a href="#" class="book-link">View PDF</a>
+                </div>
+            </article>
+
+            <article class="book-card">
+                <div class="book-cover"></div>
+                <div class="book-content">
+                    <h3 class="book-title">Mere Christianity</h3>
+                    <p class="book-author">C.S. Lewis</p>
+                    <p class="book-description">Timeless theological reflection on Christian beliefs and how faith shapes a meaningful life.</p>
+                    <a href="#" class="book-link">View PDF</a>
+                </div>
+            </article>
+
+            <article class="book-card">
+                <div class="book-cover"></div>
+                <div class="book-content">
+                    <h3 class="book-title">The Pursuit of God</h3>
+                    <p class="book-author">A.W. Tozer</p>
+                    <p class="book-description">An invitation to seek intimacy with God and cultivate a deeper devotional life.</p>
+                    <a href="#" class="book-link">View PDF</a>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p data-i18n="footer.copyright">&copy; 2026 Wells of Salvation. All rights reserved.</p>
+    </footer>
+
+    <script src="i18n-init.js"></script>
+</body>
+</html>
